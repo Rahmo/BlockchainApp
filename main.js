@@ -36,10 +36,28 @@ class blockChain {
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock) //I'm still jenny from the block ?
     }
+
+    validateChain(){
+        for(let i=1;i<=this.chain.length;i++){
+            let currentBlock = this.chain[i];
+            let previousBlock = this.chain[i-1];
+            debugger;
+            //validate the hash for the current block
+            if (currentBlock.hash !== currentBlock.calculateHash()){
+                return false;
+            }
+            //validate the previous hash
+            if (currentBlock.previousHash !== previousBlock.hash){
+                return false;
+            }
+            return true;
+        }
+    }
 }
 
 let RahmoCoin = new blockChain();
 RahmoCoin.addBlock(new block(1,Math.round(new Date().getTime()/1000),10000000));
 RahmoCoin.addBlock(new block(2,Math.round(new Date().getTime()/1000),20));
+console.log("is a valid chain " + RahmoCoin.validateChain());
 
-console.log(JSON.stringify(RahmoCoin,null,4).toString());
+    console.log(JSON.stringify(RahmoCoin,null,4).toString());
