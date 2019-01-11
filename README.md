@@ -1,2 +1,2 @@
 # BlockchainApp
-testing blockchain proof of work
+testing Block chain proof of work
